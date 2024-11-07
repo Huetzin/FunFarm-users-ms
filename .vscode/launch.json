@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+    
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "usuarios-ms",
+        "args": ["${workspaceFolder}/src/main.ts"],
+        "runtimeArgs": [
+          "--nolazy",
+          "-r",
+          "ts-node/register",
+          "-r",
+          "tsconfig-paths/register"
+        ],
+        "runtimeVersion": "v22.11.0",
+        "autoAttachChildProcesses": true,
+        "sourceMaps": true,
+        "envFile": "${workspaceFolder}/.env",
+        "cwd": "${workspaceRoot}",
+        "console": "integratedTerminal",
+      }
+    ]
+  }
