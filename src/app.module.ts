@@ -1,10 +1,24 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import appConfig from './config/app.config';
+import psqlConfig from './config/psql.config';
+import { Configuration } from './config/config.keys';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [appConfig, psqlConfig],
+    }),
+  ],
+  controllers: [],
+  providers: [],
 })
-export class AppModule {}
+export class AppModule {
+  static appEnv: string;
+  static appPort: number;
+  constructor(private readonly configService: ConfigService) {
+    AppModule.appEnv = this.configService.get(Configuration.NODE_ENV);
+    AppModule.appPort = this.configService.get(Configuration.APP_PORT);
+  }
+}
