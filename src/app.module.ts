@@ -3,12 +3,14 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import appConfig from './config/app.config';
 import psqlConfig from './config/psql.config';
 import { Configuration } from './config/config.keys';
+import { validationAppSchema } from './config/validation.schema';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
       load: [appConfig, psqlConfig],
+      validationSchema: validationAppSchema,
     }),
   ],
   controllers: [],
