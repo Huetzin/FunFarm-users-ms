@@ -12,7 +12,7 @@ export default registerAs('pgDatabase', () => {
     entities: [__dirname + '/../../../src/**/*.entity{.ts,.js}'],
     migrations: [__dirname + '/../../dist/migrations/*{.ts,.js}'],
     autoLoadEntities: true,
-    synchronize: false,
+    synchronize: true,
     migrationsRun: false,
     cli: {
       migrationsDir: [__dirname + '/src/migrations'],
